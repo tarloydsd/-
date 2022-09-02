@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "934051746380",
+    "firebase_url": "https://mybookshelf-b4320.firebaseio.com",
+    "project_id": "mybookshelf-b4320",
+    "storage_bucket": "mybookshelf-b4320.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934051746380:android:dfe127851cb39d62",
+        "android_client_info": {
+          "package_name": "com.kunfei.monkeybook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "934051746380-h547rbst1upfuip70ne77fr5e6igit9b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBprbV2vsX3Pi12CUuxDkfw_e_E7iAEZ1o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
