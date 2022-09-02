@@ -26,7 +26,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.gedoor.monkeybook"
+        applicationId "com.gedoor.bookshelf"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 10000 + gitCommits
