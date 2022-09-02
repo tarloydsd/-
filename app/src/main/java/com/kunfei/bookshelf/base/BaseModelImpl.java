@@ -83,12 +83,8 @@ public class BaseModelImpl {
 
     synchronized public static OkHttpClient getClient() {
         if (httpClient == null) {
-            httpClient = new OkHttpClient.Builder()
-                    .connectTimeout(15, TimeUnit.SECONDS)
-                    .writeTimeout(15, TimeUnit.SECONDS)
-                    .readTimeout(15, TimeUnit.SECONDS)
-                    .retryOnConnectionFailure(true)
-                    try {
+            httpClient = new OkHttpClient.Builder();
+		                        try {
 						// 自定义一个信任所有证书的TrustManager，添加SSLSocketFactory的时候要用到
 						final X509TrustManager trustAllCert =
 							new X509TrustManager() {
@@ -110,6 +106,10 @@ public class BaseModelImpl {
 						} catch (Exception e) {
 							throw new RuntimeException(e);
 					};
+                    .connectTimeout(15, TimeUnit.SECONDS)
+                    .writeTimeout(15, TimeUnit.SECONDS)
+                    .readTimeout(15, TimeUnit.SECONDS)
+                    .retryOnConnectionFailure(true)                    
                     .protocols(Collections.singletonList(Protocol.HTTP_1_1))
                     .addInterceptor(getHeaderInterceptor())
                     .build();
