@@ -13,6 +13,7 @@ import com.kunfei.bookshelf.MApplication;
 import com.kunfei.bookshelf.bean.CookieBean;
 import com.kunfei.bookshelf.help.EncodeConverter;
 import com.kunfei.bookshelf.help.SSLSocketClient;
+import com.kunfei.bookshelf.help.SSLSocketFactoryCompat;
 import com.kunfei.bookshelf.model.analyzeRule.AnalyzeUrl;
 import com.kunfei.bookshelf.model.impl.IHttpGetApi;
 import com.kunfei.bookshelf.model.impl.IHttpPostApi;
@@ -87,8 +88,28 @@ public class BaseModelImpl {
                     .writeTimeout(15, TimeUnit.SECONDS)
                     .readTimeout(15, TimeUnit.SECONDS)
                     .retryOnConnectionFailure(true)
-                    .sslSocketFactory(SSLSocketClient.getSSLSocketFactory(), SSLSocketClient.createTrustAllManager())
-                    .hostnameVerifier(SSLSocketClient.getHostnameVerifier())
+                    try {
+						// 自定义一个信任所有证书的TrustManager，添加SSLSocketFactory的时候要用到
+						final X509TrustManager trustAllCert =
+							new X509TrustManager() {
+                             @Override
+                             public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+                             }
+ 
+                             @Override
+                             public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+                             }
+ 
+                             @Override
+                             public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                                 return new java.security.cert.X509Certificate[]{};
+                             }
+                         };
+						final SSLSocketFactory sslSocketFactory = new SSLSocketFactoryCompat(trustAllCert);
+						builder.sslSocketFactory(sslSocketFactory, trustAllCert);
+						} catch (Exception e) {
+							throw new RuntimeException(e);
+					}
                     .protocols(Collections.singletonList(Protocol.HTTP_1_1))
                     .addInterceptor(getHeaderInterceptor())
                     .build();
