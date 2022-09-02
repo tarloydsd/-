@@ -109,7 +109,7 @@ public class BaseModelImpl {
 						builder.sslSocketFactory(sslSocketFactory, trustAllCert);
 						} catch (Exception e) {
 							throw new RuntimeException(e);
-					}
+					};
                     .protocols(Collections.singletonList(Protocol.HTTP_1_1))
                     .addInterceptor(getHeaderInterceptor())
                     .build();
