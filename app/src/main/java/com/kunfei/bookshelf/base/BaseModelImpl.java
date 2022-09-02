@@ -105,7 +105,7 @@ public class BaseModelImpl {
 						builder.sslSocketFactory(sslSocketFactory, trustAllCert);
 						} catch (Exception e) {
 							throw new RuntimeException(e);
-					};
+					}
                     .connectTimeout(15, TimeUnit.SECONDS)
                     .writeTimeout(15, TimeUnit.SECONDS)
                     .readTimeout(15, TimeUnit.SECONDS)
