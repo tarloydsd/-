@@ -106,13 +106,7 @@ public class BaseModelImpl {
 						} catch (Exception e) {
 							throw new RuntimeException(e);
 					}
-                    .connectTimeout(15, TimeUnit.SECONDS)
-                    .writeTimeout(15, TimeUnit.SECONDS)
-                    .readTimeout(15, TimeUnit.SECONDS)
-                    .retryOnConnectionFailure(true)                    
-                    .protocols(Collections.singletonList(Protocol.HTTP_1_1))
-                    .addInterceptor(getHeaderInterceptor())
-                    .build();
+                   httpClient = builder.build();
         }
         return httpClient;
     }
