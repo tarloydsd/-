@@ -20,6 +20,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.io.File
 import java.util.concurrent.TimeUnit
+import com.kunfei.bookshelf.dao.SearchHistoryBeanDao
+import com.kunfei.bookshelf.dao.DaoSession
 
 
 object Backup {
