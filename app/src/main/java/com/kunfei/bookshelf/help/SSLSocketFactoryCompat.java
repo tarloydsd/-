@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import android.os.Build;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocket;
